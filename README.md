@@ -1,75 +1,37 @@
-# React + TypeScript + Vite
+# Sunrise SUP • Guarderia Surf Club - Copacabana
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-18-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-4.0-cyan)
+![Vitest](https://img.shields.io/badge/Vitest-1.0-green)
+![Cypress](https://img.shields.io/badge/Cypress-13-darkgreen)
 
-Currently, two official plugins are available:
+Plataforma oficial da escola e guarderia **Sunrise SUP** na praia de Copacabana (Guarderia Surf Club - R. Francisco Otaviano, 42). Agendamento exclusivo do Passeio Nascer do Sol (05:30 AM).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Funcionalidades e Estrutura de Páginas
 
-## React Compiler
+1. **Início (Home)**: Banner principal com hero, card de ancoragem R$ 150,00, tópicos de segurança, avaliação 9.8 excelente e galeria de fotos.
+2. **Sobre Nós**: História na Guarderia Surf Club, princípios de atendimento e FAQ com perguntas frequentes.
+3. **Como Trabalhamos**: Guia em 10 passos cronológicos desde o check-in na guarderia ao envio do link com as fotos em HD.
+4. **Reservas Online**: Calendário mensal interativo com escolha de data, seletor de participantes e cálculo do valor total.
+5. **Contato & Localização**: Endereço na Guarderia Surf Club, mapa e atendimento direto via WhatsApp (+55 21 99846-0818).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Arquitetura de Software
 
-## Expanding the ESLint configuration
+- Core: React 18 com TypeScript e Vite.
+- Estilização: Tailwind CSS com paleta estendida (Sunrise Navy, Sunrise Yellow, Sunrise Cerulean).
+- Testes Unitários: Vitest com React Testing Library.
+- Testes End-to-End: Cypress.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Como Executar
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+# Instalar dependências
+npm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# Iniciar servidor em desenvolvimento
+npm run dev
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+# Executar suíte de testes unitários
+npm test
 ```

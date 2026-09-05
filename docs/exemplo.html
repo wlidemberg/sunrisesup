@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sunrise SUP • Guarderia Surf Club - Copacabana</title>
+
+  <!-- Google Fonts: Outfit (Títulos) & Inter (Corpo de Texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'sunrise-yellow': '#FCD04B',
+            'sunrise-yellow-hover': '#F3C432',
+            'sunrise-navy': '#112D4E',
+            'sunrise-navy-dark': '#0B1D33',
+            'sunrise-cerulean': '#2B7EA1',
+            'sunrise-foam': '#95C3D7',
+            'sunrise-sand': '#EBF6FA',
+            'sunrise-slate': '#475569',
+          },
+          fontFamily: {
+            heading: ['Outfit', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --sunrise-yellow: #FCD04B;
+      --sunrise-yellow-hover: #F3C432;
+      --sunrise-navy: #112D4E;
+      --sunrise-navy-dark: #0B1D33;
+      --sunrise-cerulean: #2B7EA1;
+      --sunrise-foam: #95C3D7;
+      --sunrise-sand: #EBF6FA;
+      --sunrise-slate: #475569;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--sunrise-navy);
+      background-color: #F8FAFC;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    /* Botão Primário Solar */
+    .btn-solar {
+      background: var(--sunrise-yellow);
+      color: var(--sunrise-navy);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      box-shadow: 0 8px 22px rgba(252, 208, 75, 0.45);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-solar:hover {
+      background: var(--sunrise-yellow-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(252, 208, 75, 0.6);
+      color: var(--sunrise-navy);
+    }
+
+    /* Cápsula Flutuante Fixa de Redes Sociais */
+    .sunrise-floating-glass-dock {
+      position: fixed;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 70;
+      padding: 10px 8px;
+      background: rgba(17, 45, 78, 0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 40px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .sunrise-floating-glass-dock a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .sunrise-floating-glass-dock a:hover {
+      background: var(--sunrise-yellow);
+      color: var(--sunrise-navy);
+      transform: scale(1.1);
+      border-color: var(--sunrise-yellow);
+    }
+
+    @media (max-width: 640px) {
+      .sunrise-floating-glass-dock {
+        right: 8px;
+        padding: 6px 5px;
+        gap: 6px;
+      }
+      .sunrise-floating-glass-dock a {
+        width: 34px;
+        height: 34px;
+      }
+    }
+
+    .card-touch {
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .card-touch:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px rgba(17, 45, 78, 0.08);
+      border-color: var(--sunrise-cerulean);
+    }
+
+    /* Abas de Navegação */
+    .page-tab-btn.active {
+      background: var(--sunrise-yellow) !important;
+      color: var(--sunrise-navy) !important;
+      font-weight: 800 !important;
+      box-shadow: 0 4px 14px rgba(252, 208, 75, 0.45);
+    }
+
+    /* ==========================================================================
+       REGRA DE GRID PARA A SEÇÃO DE 10 PASSOS:
+       - Padrão Desktop largo: 5 colunas
+       - Resolução < 1360px: exatamente 3 colunas por linha
+       - Tablet / Celular: 2 colunas e 1 coluna
+       ========================================================================== */
+    .steps-process-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+      width: 100%;
+    }
+
+    @media (max-width: 1360px) {
+      .steps-process-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 16px !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .steps-process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .steps-process-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* Estilização da Tabela de Calendário WooCommerce */
+    .wc-bookings-calendar-table th {
+      padding: 8px 4px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--sunrise-cerulean);
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .wc-bookings-calendar-table td {
+      padding: 3px;
+      text-align: center;
+    }
+    .wc-day-btn {
+      width: 100%;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+    .wc-day-btn.available {
+      background-color: var(--sunrise-sand);
+      color: var(--sunrise-navy);
+      border-color: rgba(149, 195, 215, 0.4);
+    }
+    .wc-day-btn.available:hover {
+      background-color: var(--sunrise-yellow);
+      color: var(--sunrise-navy);
+      transform: scale(1.05);
+    }
+    .wc-day-btn.selected {
+      background-color: var(--sunrise-yellow) !important;
+      color: var(--sunrise-navy) !important;
+      font-weight: 900 !important;
+      border-color: var(--sunrise-yellow-hover) !important;
+      box-shadow: 0 4px 10px rgba(252, 208, 75, 0.5);
+    }
+    .wc-day-btn.disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-sunrise-navy font-body antialiased">
+
+  <!-- =================================================================
+       HEADER FIXO COM LOGO OFICIAL E MENU MULTI-PÁGINAS
+       ================================================================= -->
+  <header class="bg-sunrise-navy-dark text-white border-b border-white/10 px-4 py-3 sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Logo + Identidade Guarderia -->
+      <a href="javascript:void(0)" onclick="showPage('home')" class="flex items-center gap-3 text-left">
+        <img 
+          src="https://sunrisesup.com.br/wp-content/uploads/2026/08/sunrise-logo-192-x-192-px-1.png" 
+          alt="Sunrise SUP Logo" 
+          class="w-9 h-9 rounded-full border border-sunrise-yellow bg-white p-0.5 object-cover"
+        />
+        <div>
+          <span class="font-heading font-black text-sm text-white tracking-wider block leading-tight">SUNRISE SUP</span>
+          <span class="text-[10px] text-sunrise-foam block font-medium">Guarderia Surf Club &bull; Copacabana</span>
+        </div>
+      </a>
+
+      <!-- Ações Mobile: Botão Rápido Reservar + Ícone Hamburger -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button onclick="showPage('reserva')" class="bg-sunrise-yellow text-sunrise-navy font-heading font-extrabold text-[11px] uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-sm">
+          Reservar
+        </button>
+        
+        <button 
+          id="mobile-menu-toggle" 
+          onclick="toggleMobileMenu()" 
+          class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 active:scale-95 flex items-center justify-center transition border border-white/20"
+          aria-label="Abrir Menu de Navegação"
+          aria-expanded="false"
+        >
+          <svg id="hamburger-icon" class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg id="close-icon" class="w-5 h-5 fill-none stroke-current hidden" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Navegação Desktop (Pills Limpas) -->
+      <nav class="hidden md:flex items-center gap-1.5 text-xs font-heading font-bold" aria-label="Navegação principal desktop">
+        <button onclick="showPage('home')" id="tab-home" class="page-tab-btn active px-3.5 py-2 rounded-full transition whitespace-nowrap bg-white/10 text-white hover:bg-white/20">
+          Início
+        </button>
+        <button onclick="showPage('sobre')" id="tab-sobre" class="page-tab-btn px-3.5 py-2 rounded-full transition whitespace-nowrap bg-white/10 text-white hover:bg-white/20">
+          Sobre Nós
+        </button>
+        <button onclick="showPage('comotrabalhamos')" id="tab-comotrabalhamos" class="page-tab-btn px-3.5 py-2 rounded-full transition whitespace-nowrap bg-white/10 text-white hover:bg-white/20">
+          Como Trabalhamos
+        </button>
+        <button onclick="showPage('reserva')" id="tab-reserva" class="page-tab-btn px-3.5 py-2 rounded-full transition whitespace-nowrap bg-white/10 text-white hover:bg-white/20">
+          Reservas Online
+        </button>
+        <button onclick="showPage('contato')" id="tab-contato" class="page-tab-btn px-3.5 py-2 rounded-full transition whitespace-nowrap bg-white/10 text-white hover:bg-white/20">
+          Contato & Localização
+        </button>
+      </nav>
+
+    </div>
+
+    <!-- Gaveta de Navegação Mobile -->
+    <div id="mobile-menu-drawer" class="hidden md:hidden border-t border-white/15 pt-3 pb-4 px-2 mt-2">
+      <div class="flex flex-col gap-1.5 text-xs font-heading font-bold">
+        <button onclick="showPage('home'); closeMobileMenu();" id="tab-mobile-home" class="mobile-tab-btn active w-full text-left px-4 py-3 rounded-xl bg-white/10 text-white hover:bg-white/20 transition flex items-center justify-between">
+          <span>Início</span>
+          <span class="text-sunrise-yellow">&rarr;</span>
+        </button>
+        <button onclick="showPage('sobre'); closeMobileMenu();" id="tab-mobile-sobre" class="mobile-tab-btn w-full text-left px-4 py-3 rounded-xl bg-white/10 text-white hover:bg-white/20 transition flex items-center justify-between">
+          <span>Sobre Nós</span>
+          <span class="text-sunrise-yellow">&rarr;</span>
+        </button>
+        <button onclick="showPage('comotrabalhamos'); closeMobileMenu();" id="tab-mobile-comotrabalhamos" class="mobile-tab-btn w-full text-left px-4 py-3 rounded-xl bg-white/10 text-white hover:bg-white/20 transition flex items-center justify-between">
+          <span>Como Trabalhamos (10 Passos)</span>
+          <span class="text-sunrise-yellow">&rarr;</span>
+        </button>
+        <button onclick="showPage('reserva'); closeMobileMenu();" id="tab-mobile-reserva" class="mobile-tab-btn w-full text-left px-4 py-3 rounded-xl bg-white/10 text-white hover:bg-white/20 transition flex items-center justify-between">
+          <span>Reservas Online (WooCommerce)</span>
+          <span class="text-sunrise-yellow">&rarr;</span>
+        </button>
+        <button onclick="showPage('contato'); closeMobileMenu();" id="tab-mobile-contato" class="mobile-tab-btn w-full text-left px-4 py-3 rounded-xl bg-white/10 text-white hover:bg-white/20 transition flex items-center justify-between">
+          <span>Contato & Localização</span>
+          <span class="text-sunrise-yellow">&rarr;</span>
+        </button>
+      </div>
+
+      <div class="mt-4 pt-3 border-t border-white/10 flex flex-col gap-2">
+        <a 
+          href="https://wa.me/5521998460818?text=Ola!%20Gostaria%20de%20informacoes%20sobre%20as%20vagas%20de%20stand%20up%20paddle."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full text-center bg-sunrise-yellow text-sunrise-navy font-heading font-black text-xs uppercase py-3 rounded-xl shadow-md block"
+        >
+          Falar no WhatsApp Oficial
+        </a>
+        <span class="text-[10px] text-center text-slate-300 block">
+          Guarderia Surf Club &bull; R. Francisco Otaviano, 42
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- DOCK FLUTUANTE DE REDES SOCIAIS (SEM EMOJIS) -->
+  <aside class="sunrise-floating-glass-dock" aria-label="Redes sociais da Sunrise SUP">
+    <a 
+      href="https://wa.me/5521998460818?text=Ola!%20Gostaria%20de%20informacoes%20sobre%20as%20vagas%20de%20stand%20up%20paddle." 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      title="Falar no WhatsApp: +55 21 99846-0818"
+      aria-label="WhatsApp"
+    >
+      <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+      </svg>
+    </a>
+    <a 
+      href="https://instagram.com/sunrisesup" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      title="Instagram @sunrisesup"
+      aria-label="Instagram"
+    >
+      <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    </a>
+    <a 
+      href="https://tiktok.com/@sunrisesup" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      title="TikTok @sunrisesup"
+      aria-label="TikTok"
+    >
+      <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
+        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+      </svg>
+    </a>
+  </aside>
+
+  <!-- =================================================================
+       PÁGINA 1: HOME (IMAGEM 1 REDESENHADA)
+       ================================================================= -->
+  <main id="view-home" class="page-view block">
+    
+    <!-- Hero Section da Home -->
+    <section class="relative min-h-[88vh] flex items-center bg-sunrise-navy pt-16 pb-20 overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80" 
+          alt="Nascer do Sol em Copacabana"
+          class="w-full h-full object-cover object-center opacity-40"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-sunrise-navy/95 via-sunrise-navy/85 to-sunrise-cerulean/60"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-5 sm:px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
+        
+        <div class="lg:col-span-7 text-white text-center lg:text-left">
+          <h1 class="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.12] mb-4 sm:mb-6">
+            Desperte com o Sol no Mar de <span class="text-sunrise-yellow">Copacabana</span>
+          </h1>
+
+          <p class="text-sm sm:text-lg text-slate-200 font-normal leading-relaxed max-w-xl mx-auto lg:mx-0 mb-6 sm:mb-8">
+            A remada mais emblemática do Rio de Janeiro. Águas calmas e abrigadas, instruções individuais para iniciantes, equipamentos higienizados e fotos de alta resolução para eternizar seu início de dia.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 sm:gap-4 w-full">
+            <button onclick="showPage('reserva')" class="btn-solar w-full sm:w-auto py-4 px-8">
+              <span>Reservar Meu Horário</span>
+              <span class="text-lg leading-none">&rarr;</span>
+            </button>
+            <button onclick="showPage('comotrabalhamos')" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 rounded-full text-xs sm:text-sm font-heading font-bold text-white border border-white/30 hover:bg-white/10 transition-colors">
+              Como funciona o passo a passo
+            </button>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-white/15 text-xs text-slate-300 font-medium">
+            <div class="flex items-center gap-2">
+              <span class="text-sunrise-yellow font-bold">&bull;</span> Seguro para iniciantes
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-sunrise-yellow font-bold">&bull;</span> Fotos em alta resolução inclusas
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-sunrise-yellow font-bold">&bull;</span> Instrutor dedicado ao lado
+            </div>
+          </div>
+        </div>
+
+        <!-- Card de Ancoragem R$ 150 -->
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
+          <div class="w-full max-w-sm bg-white/95 backdrop-blur-xl rounded-3xl p-7 sm:p-8 shadow-2xl border border-white/80 text-center relative transform hover:-translate-y-1 transition-all">
+            
+            <div class="inline-block bg-sunrise-cerulean text-white text-[10px] font-heading font-extrabold uppercase tracking-widest px-4 py-1 rounded-full shadow-sm mb-3">
+              Saída Diária &bull; 05:30 AM
+            </div>
+
+            <span class="block text-xs font-bold uppercase tracking-wider text-sunrise-cerulean mb-1">Experiência Completa de SUP</span>
+            
+            <div class="flex items-baseline justify-center gap-1 mb-2">
+              <span class="text-xl font-heading font-bold text-sunrise-navy">R$</span>
+              <span class="text-5xl font-heading font-black text-sunrise-navy">150</span>
+              <span class="text-xl font-heading font-bold text-sunrise-navy">,00</span>
+            </div>
+
+            <p class="text-xs text-sunrise-slate font-medium mb-6">Por pessoa &bull; 1h30 de conexão no mar calmo</p>
+
+            <div class="space-y-3 text-left border-t border-slate-100 pt-5 mb-7 text-xs font-semibold text-sunrise-navy">
+              <div class="flex items-center gap-2.5">
+                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-bold">L</span>
+                <span>Ensaio de fotos e vídeos em alta resolução</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-bold">L</span>
+                <span>Instrutor dedicado e instrução técnica na areia</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-bold">L</span>
+                <span>Prancha de alta estabilidade, remo e colete</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-bold">L</span>
+                <span>Guarda-volumes seguro na base da guarderia</span>
+              </div>
+            </div>
+
+            <button onclick="showPage('reserva')" class="w-full btn-solar text-xs py-4 block text-center">
+              Reservar pelo Calendário &rarr;
+            </button>
+
+            <span class="block text-[11px] text-slate-400 mt-3">Cancelamento grátis até 48h antes da saída</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Seção O que Oferecemos -->
+    <section class="py-20 bg-[#F8FAFC]">
+      <div class="max-w-7xl mx-auto px-5 sm:px-6">
+        
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="inline-block text-xs font-heading font-extrabold uppercase tracking-widest text-sunrise-cerulean bg-sunrise-sand px-4 py-1.5 rounded-full mb-3">
+            Estrutura e Segurança Náutica
+          </span>
+          <h2 class="font-heading font-black text-2xl sm:text-4xl text-sunrise-navy mb-4">
+            O que oferecemos na sua remada
+          </h2>
+          <p class="text-sunrise-slate text-xs sm:text-base">
+            Tudo o que você precisa para vivenciar o amanhecer do mar do Rio com segurança, tranquilidade e memórias inesquecíveis.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <div class="lg:col-span-7">
+            <h3 class="font-heading font-extrabold text-xl sm:text-3xl text-sunrise-navy mb-4 leading-snug">
+              Buscando renovar as energias e se conectar de verdade com o mar?
+            </h3>
+            <p class="text-sunrise-slate text-xs sm:text-sm leading-relaxed mb-6">
+              A <strong>Sunrise SUP</strong> oferece a experiência mais acolhedora de Stand Up Paddle do Rio de Janeiro. Projetada tanto para quem nunca subiu numa prancha quanto para remadores frequentes. Nossas saídas contam com acompanhamento próximo, equipamentos higienizados e vista privilegiada.
+            </p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5 mb-8">
+              <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center shadow-sm card-touch">
+                <span class="text-[10px] font-heading font-extrabold text-sunrise-cerulean uppercase block mb-1">01</span>
+                <h4 class="font-heading font-bold text-xs text-sunrise-navy mb-1">Fotos em Alta</h4>
+                <p class="text-[11px] text-slate-500">Registros profissionais inclusos</p>
+              </div>
+
+              <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center shadow-sm card-touch">
+                <span class="text-[10px] font-heading font-extrabold text-sunrise-cerulean uppercase block mb-1">02</span>
+                <h4 class="font-heading font-bold text-xs text-sunrise-navy mb-1">Segurança Total</h4>
+                <p class="text-[11px] text-slate-500">Colete homologado e instrutor</p>
+              </div>
+
+              <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center shadow-sm card-touch">
+                <span class="text-[10px] font-heading font-extrabold text-sunrise-cerulean uppercase block mb-1">03</span>
+                <h4 class="font-heading font-bold text-xs text-sunrise-navy mb-1">Treinamento Inicial</h4>
+                <p class="text-[11px] text-slate-500">Instruções práticas na areia</p>
+              </div>
+
+              <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center shadow-sm card-touch">
+                <span class="text-[10px] font-heading font-extrabold text-sunrise-cerulean uppercase block mb-1">04</span>
+                <h4 class="font-heading font-bold text-xs text-sunrise-navy mb-1">Guarda Volumes</h4>
+                <p class="text-[11px] text-slate-500">Pertences seguros na guarderia</p>
+              </div>
+
+              <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center shadow-sm card-touch">
+                <span class="text-[10px] font-heading font-extrabold text-sunrise-cerulean uppercase block mb-1">05</span>
+                <h4 class="font-heading font-bold text-xs text-sunrise-navy mb-1">Capa Estanque</h4>
+                <p class="text-[11px] text-slate-500">Proteção para seu smartphone</p>
+              </div>
+
+              <div class="bg-white p-4 rounded-2xl border border-slate-200 text-center shadow-sm card-touch">
+                <span class="text-[10px] font-heading font-extrabold text-sunrise-cerulean uppercase block mb-1">06</span>
+                <h4 class="font-heading font-bold text-xs text-sunrise-navy mb-1">Imagens Aéreas</h4>
+                <p class="text-[11px] text-slate-500">Vídeos com drone sob consulta</p>
+              </div>
+            </div>
+
+            <button onclick="showPage('reserva')" class="btn-solar text-xs py-3.5 px-8">
+              Ver Disponibilidade de Vagas &rarr;
+            </button>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white group">
+              <img 
+                src="https://test.sunrisesup.com.br/wp-content/uploads/2026/04/Equipe-Gladiadores_stand-up-convertido-de-JPG-2048x1365-1-e1777864031834.webp" 
+                alt="Remadora ao nascer do sol no mar de Copacabana"
+                onerror="this.src='https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80'"
+                class="w-full h-80 sm:h-[460px] object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-sunrise-navy/85 via-transparent to-transparent"></div>
+              
+              <div class="absolute bottom-6 left-6 right-6 text-center">
+                <button onclick="showPage('sobre')" class="w-full bg-sunrise-yellow hover:bg-sunrise-yellow-hover text-sunrise-navy font-heading font-extrabold text-xs uppercase py-3.5 px-6 rounded-full shadow-xl tracking-wider transition">
+                  Conheça Nossa História &rarr;
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Métricas & Avaliação 9.8 -->
+    <section class="py-20 bg-gradient-to-br from-sunrise-cerulean to-sunrise-navy text-white relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-5 sm:px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <div class="lg:col-span-6">
+          <div class="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20 shadow-2xl">
+            <div class="overflow-hidden rounded-2xl mb-4 h-60 sm:h-72">
+              <img 
+                src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=800&q=80" 
+                alt="Remadora contemplando o mar"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <p class="text-xs sm:text-sm italic text-slate-100 text-center leading-relaxed mb-2">
+              "Gratidão pelo reencontro, renovar o equilíbrio e acolher o silêncio da manhã nas águas mais calmas de Copacabana."
+            </p>
+            <span class="block text-center text-xs font-bold text-sunrise-yellow uppercase tracking-widest">Beatriz Xavier &bull; Remadora Sunrise</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <h3 class="font-heading font-black text-2xl sm:text-4xl text-white mb-6 leading-tight">
+            Vamos remar juntos?
+          </h3>
+
+          <div class="inline-flex items-center gap-4 bg-sunrise-navy/80 border-2 border-sunrise-yellow rounded-2xl px-6 py-3 mb-6 shadow-xl">
+            <div class="font-heading font-black text-3xl sm:text-4xl text-sunrise-yellow leading-none">9.8</div>
+            <div class="text-left">
+              <span class="block text-[11px] font-heading font-bold text-white uppercase tracking-wider">Avaliação Geral</span>
+              <span class="text-xs text-sunrise-yellow font-bold tracking-wider">EXCELENTE</span>
+            </div>
+          </div>
+
+          <div class="space-y-4 mb-8">
+            <div class="border-l-4 border-sunrise-yellow pl-4">
+              <div class="font-heading font-black text-3xl sm:text-4xl text-white leading-none mb-1">+15.000</div>
+              <div class="text-xs font-semibold uppercase tracking-widest text-sunrise-foam">Passeios realizados com segurança</div>
+            </div>
+            <div class="border-l-4 border-sunrise-yellow pl-4">
+              <div class="font-heading font-black text-3xl sm:text-4xl text-white leading-none mb-1">+450</div>
+              <div class="text-xs font-semibold uppercase tracking-widest text-sunrise-foam">Horas de conexão no mar do Rio</div>
+            </div>
+          </div>
+
+          <div onclick="showPage('reserva')" class="cursor-pointer flex items-center justify-between bg-white/10 hover:bg-white/20 border border-dashed border-white/40 hover:border-sunrise-yellow rounded-2xl p-4 text-white transition">
+            <div>
+              <span class="block text-xs font-heading font-bold text-sunrise-yellow uppercase tracking-wider">Viva essa experiência no mar</span>
+              <span class="text-xs text-slate-200">Consulte vagas avulsas, amigos ou horários exclusivos</span>
+            </div>
+            <span class="text-xl text-sunrise-yellow font-bold">&rarr;</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Galeria de Fotos -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-5 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="inline-block text-xs font-heading font-extrabold uppercase tracking-widest text-sunrise-cerulean bg-sunrise-sand px-4 py-1.5 rounded-full mb-3">
+            Galeria de Fotos
+          </span>
+          <h2 class="font-heading font-black text-2xl sm:text-3xl text-sunrise-navy mb-2">
+            Fotos do Nascer do Sol em Copacabana
+          </h2>
+          <p class="text-sunrise-slate text-xs sm:text-sm">
+            Registros reais feitos diariamente pelos nossos instrutores na Guarderia Surf Club.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div class="sm:col-span-2 relative h-64 sm:h-72 rounded-2xl overflow-hidden shadow card-touch">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Remada ao amanhecer" class="w-full h-full object-cover"/>
+          </div>
+          <div class="relative h-64 sm:h-72 rounded-2xl overflow-hidden shadow card-touch">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Instrutor orientando remador" class="w-full h-full object-cover"/>
+          </div>
+          <div class="relative h-64 sm:h-72 rounded-2xl overflow-hidden shadow card-touch">
+            <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=800&q=80" alt="Silhueta contra o mar" class="w-full h-full object-cover"/>
+          </div>
+          <div class="relative h-64 sm:h-72 rounded-2xl overflow-hidden shadow card-touch">
+            <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80" alt="Grupo remando no mar" class="w-full h-full object-cover"/>
+          </div>
+          <div class="relative h-64 sm:h-72 rounded-2xl overflow-hidden shadow card-touch">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Equipamentos na praia" class="w-full h-full object-cover"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =================================================================
+       PÁGINA 2: SOBRE NÓS (IMAGEM 2 REDESENHADA)
+       ================================================================= -->
+  <main id="view-sobre" class="page-view hidden">
+    
+    <section class="bg-sunrise-navy text-white pt-16 pb-20 px-5 text-center">
+      <div class="max-w-3xl mx-auto">
+        <span class="inline-block text-xs font-heading font-extrabold uppercase tracking-widest text-sunrise-yellow bg-white/10 px-4 py-1.5 rounded-full mb-3">
+          Nossa História e Propósito
+        </span>
+        <h1 class="font-heading font-black text-3xl sm:text-5xl text-white mb-4">
+          Conexão com o Mar na <span class="text-sunrise-yellow">Guarderia Surf Club</span>
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-2xl mx-auto">
+          Fundada para proporcionar uma experiência acolhedora de contato com a natureza carioca, aliando segurança integral e o nascer do sol mais famoso do mundo.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-14 max-w-6xl mx-auto px-5 sm:px-6 -mt-8 relative z-20">
+      
+      <!-- Filosofia de Atendimento (3 Pilares) -->
+      <div class="text-center mb-8">
+        <span class="text-xs font-heading font-extrabold text-sunrise-cerulean uppercase tracking-widest block mb-1">Nossos Princípios</span>
+        <h2 class="font-heading font-black text-2xl sm:text-3xl text-sunrise-navy">Filosofia de Atendimento Sunrise SUP</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white rounded-3xl p-7 shadow-lg border border-slate-200 text-center card-touch">
+          <div class="w-12 h-12 mx-auto mb-4 rounded-2xl bg-sunrise-navy text-sunrise-yellow flex items-center justify-center font-heading font-black text-lg">
+            01
+          </div>
+          <h3 class="font-heading font-bold text-base text-sunrise-navy mb-2">Assessoria no Cuidado e Personalização</h3>
+          <p class="text-xs text-sunrise-slate leading-relaxed">
+            Cada participante é recebido individualmente. Analisamos seu nível de intimidade com a água para garantir uma remada calma e sem medo.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-7 shadow-lg border border-slate-200 text-center card-touch">
+          <div class="w-12 h-12 mx-auto mb-4 rounded-2xl bg-sunrise-navy text-sunrise-yellow flex items-center justify-center font-heading font-black text-lg">
+            02
+          </div>
+          <h3 class="font-heading font-bold text-base text-sunrise-navy mb-2">Consultoria Dedicada e Apaixonada</h3>
+          <p class="text-xs text-sunrise-slate leading-relaxed">
+            Nossos instrutores vivem o mar de Copacabana diariamente e compartilham conhecimento técnico e respeito à vida marinha.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-7 shadow-lg border border-slate-200 text-center card-touch">
+          <div class="w-12 h-12 mx-auto mb-4 rounded-2xl bg-sunrise-navy text-sunrise-yellow flex items-center justify-center font-heading font-black text-lg">
+            03
+          </div>
+          <h3 class="font-heading font-bold text-base text-sunrise-navy mb-2">Nosso Foco é a Sua Segurança</h3>
+          <p class="text-xs text-sunrise-slate leading-relaxed">
+            Coletes certificados pela Marinha do Brasil, pranchas largas de alta estabilidade e monitoramento permanente durante todo o circuito.
+          </p>
+        </div>
+      </div>
+
+      <!-- Caixa Editorial da Guarderia -->
+      <div class="bg-sunrise-sand rounded-3xl p-8 sm:p-12 border border-sunrise-foam/50 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
+        <div class="lg:col-span-8">
+          <span class="text-xs font-heading font-extrabold uppercase tracking-wider text-sunrise-cerulean block mb-2">
+            Base Oficial &bull; Copacabana
+          </span>
+          <h3 class="font-heading font-black text-xl sm:text-2xl text-sunrise-navy mb-3">
+            Instrutores Atentos e Equipamentos Homologados
+          </h3>
+          <p class="text-xs sm:text-sm text-sunrise-slate leading-relaxed mb-4">
+            Cada aluno recebe instrução individual antes de pisar na água: postura correta, controle de equilíbrio e técnicas de remada. Nossas pranchas de alta flutuabilidade e coletes salva-vidas garantem que mesmo quem não sabe nadar consiga aproveitar com tranquilidade absoluta.
+          </p>
+          <button onclick="showPage('reserva')" class="btn-solar text-xs py-3 px-6">
+            Conhecer os Passeios Disponíveis &rarr;
+          </button>
+        </div>
+        <div class="lg:col-span-4 flex justify-center">
+          <div class="w-32 h-32 rounded-full bg-white p-3 shadow-lg border-2 border-sunrise-yellow flex items-center justify-center">
+            <img src="https://sunrisesup.com.br/wp-content/uploads/2026/08/sunrise-logo-192-x-192-px-1.png" alt="Logo Sunrise SUP" class="w-full h-full object-cover rounded-full">
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ das Imagens das Perguntas Frequentes -->
+      <div class="bg-white rounded-3xl p-7 sm:p-10 shadow-xl border border-slate-200 mb-10">
+        <div class="text-center mb-8">
+          <span class="text-xs font-heading font-extrabold text-sunrise-cerulean uppercase tracking-widest block mb-1">Dúvidas Frequentes</span>
+          <h3 class="font-heading font-black text-2xl text-sunrise-navy">Tudo o que você precisa saber</h3>
+        </div>
+
+        <div class="space-y-3.5">
+          <details class="bg-slate-50 rounded-2xl p-4 border border-slate-200 cursor-pointer">
+            <summary class="font-heading font-bold text-sm text-sunrise-navy">O que acontece se chover no dia da remada?</summary>
+            <p class="text-xs text-sunrise-slate mt-2 leading-relaxed">
+              Caso as condições marítimas estejam desfavoráveis (mar agitado ou vento excessivo), remarcamos sem custos para outra data ou devolvemos integralmente o seu pagamento. Chuvisco fraco com mar calmo não cancela o passeio.
+            </p>
+          </details>
+
+          <details class="bg-slate-50 rounded-2xl p-4 border border-slate-200 cursor-pointer">
+            <summary class="font-heading font-bold text-sm text-sunrise-navy">A experiência inclui fotos ou filmagem?</summary>
+            <p class="text-xs text-sunrise-slate mt-2 leading-relaxed">
+              Sim! O ensaio de fotos e vídeos em alta resolução já está totalmente incluso no valor do passeio avulso de R$ 150.
+            </p>
+          </details>
+
+          <details class="bg-slate-50 rounded-2xl p-4 border border-slate-200 cursor-pointer">
+            <summary class="font-heading font-bold text-sm text-sunrise-navy">Posso cancelar ou alterar minha reserva?</summary>
+            <p class="text-xs text-sunrise-slate mt-2 leading-relaxed">
+              Sim, cancelamentos ou alterações com até 48 horas de antecedência são 100% gratuitos.
+            </p>
+          </details>
+
+          <details class="bg-slate-50 rounded-2xl p-4 border border-slate-200 cursor-pointer">
+            <summary class="font-heading font-bold text-sm text-sunrise-navy">Nunca fiz Stand Up Paddle. Posso participar mesmo assim?</summary>
+            <p class="text-xs text-sunrise-slate mt-2 leading-relaxed">
+              Com certeza! Mais de 85% dos nossos alunos nunca subiram em uma prancha antes. Oferecemos treino prático prévio na areia e acompanhamento de perto.
+            </p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Imagem Panorâmica Editorial -->
+      <div class="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white card-touch relative group">
+        <img 
+          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80" 
+          alt="Cenário de mar calmo em Copacabana na Guarderia Surf Club"
+          class="w-full h-64 sm:h-80 lg:h-96 object-cover object-center group-hover:scale-105 transition-transform duration-700"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-sunrise-navy/85 via-sunrise-navy/25 to-transparent"></div>
+        <div class="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 text-white">
+          <div>
+            <span class="text-[10px] font-heading font-extrabold uppercase tracking-widest text-sunrise-yellow block mb-1">
+              Base Oficial &bull; Copacabana
+            </span>
+            <h4 class="font-heading font-black text-lg sm:text-2xl leading-tight">
+              Oceano Calmo, Segurança e Conexão com a Natureza
+            </h4>
+          </div>
+          <button onclick="showPage('reserva')" class="btn-solar text-xs py-3 px-6 whitespace-nowrap">
+            Agendar Remada &rarr;
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =================================================================
+       PÁGINA 3: COMO TRABALHAMOS (IMAGEM 3 REDESENHADA COM 10 PASSOS)
+       ================================================================= -->
+  <main id="view-comotrabalhamos" class="page-view hidden">
+    
+    <section class="bg-sunrise-navy text-white pt-16 pb-20 px-5 text-center">
+      <div class="max-w-3xl mx-auto">
+        <span class="inline-block text-xs font-heading font-extrabold uppercase tracking-widest text-sunrise-yellow bg-white/10 px-4 py-1.5 rounded-full mb-3">
+          Experiência Stand Up Paddle
+        </span>
+        <h1 class="font-heading font-black text-3xl sm:text-5xl text-white mb-3">
+          Como Trabalhamos
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-200">
+          Entenda o fluxo completo da sua manhã: do check-in na guarderia ao registro final com o link das fotos.
+        </p>
+      </div>
+    </section>
+
+    <!-- Grid Sequencial dos 10 Passos Cronológicos -->
+    <section class="py-14 max-w-7xl mx-auto px-5 sm:px-6 -mt-8 relative z-20">
+      
+      <div class="steps-process-grid mb-14">
+        
+        <!-- Passo 1 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between card-touch">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-sunrise-navy text-sunrise-yellow font-heading font-black text-sm flex items-center justify-center mb-3">
+              1
+            </div>
+            <h3 class="font-heading font-extrabold text-sm text-sunrise-navy mb-1.5 leading-snug">
+              Recepção dos Participantes
+            </h3>
+            <p class="text-xs text-sunrise-slate leading-relaxed">
+              Direcionamos para a fila de acolhimento e organização dos remadores na base da guarderia.
+            </p>
+          </div>
+        </div>
+
+        <!-- Passo 2 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between card-touch">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-sunrise-navy text-sunrise-yellow font-heading font-black text-sm flex items-center justify-center mb-3">
+              2
+            </div>
+            <h3 class="font-heading font-extrabold text-sm text-sunrise-navy mb-1.5 leading-snug">
+              Check-in
+            </h3>
+            <p class="text-xs text-sunrise-slate leading-relaxed">
+              Confirmamos presença na lista oficial da saída matinal com rapidez e cordialidade.
+            </p>
+          </div>
+        </div>
+
+        <!-- Passo 3 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between card-touch">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-sunrise-navy text-sunrise-yellow font-heading font-black text-sm flex items-center justify-center mb-3">
+              3
+            </div>
+            <h3 class="font-heading font-extrabold text-sm text-sunrise-navy mb-1.5 leading-snug">
+              Venda de Adicionais Pagos
+            </h3>
+            <p class="text-xs text-sunrise-slate leading-relaxed">
+              Capinhas impermeáveis para celular e captação aérea profissional com drone sob consulta.
+            </p>
+          </div>
+        </div>
+
+        <!-- Passo 4 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between card-touch">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-sunrise-navy text-sunrise-yellow font-heading font-black text-sm flex items-center justify-center mb-3">
+              4
+            </div>
+            <h3 class="font-heading font-extrabold text-sm text-sunrise-navy mb-1.5 leading-snug">
+              Troca de Roupas & Guarda-volumes
+            </h3>
+            <p class="text-xs text-sunrise-slate leading-relaxed">
+              Direcionamos os participantes para vestiários arejados, trocador e guarda-volumes seguro.
+            </p>
+          </div>
+        </div>
+
+        <!-- Passo 5 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between card-touch">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-sunrise-navy text-sunrise-yellow font-heading font-black text-sm flex items-center justify-center mb-3">
+              5
+            </div>
+            <h3 class="font-heading font-extrabold text-sm text-sunrise-navy mb-1.5 leading-snug">
+              Equipamento & Preparação
+            </h3>
+            <p class="text-xs text-sunrise-slate leading-relaxed">
+              Equipamos todos com coletes salva-vidas homologados e remos leves no tamanho correto.
+            </p>
+          </div>
+        </div>
+
+        <!-- Passo 6 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between card-touch">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-sunrise-navy text-sunrise-yellow font-heading font-black text-sm flex items-center justify-center mb-3">
+              6
+            </div>
+            <h3 class="font-heading font-extrabold text-sm text-sunrise-navy mb-1.5 leading-snug">
+              Instruções Técnicas
+            </h3>
+            <p class="text-xs text-sunrise-slate leading-relaxed">
+              Explicamos na areia: como subir na prancha, postura, controle de equilíbrio e regras de segurança.
+            </p>
+          </div>
+        </div>
+
+        <!-- Passo 7 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between card-touch">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-sunrise-navy text-sunrise-yellow font-heading font-black text-sm flex items-center justify-center mb-3">
+              7
+            </div>
+            <h3 class="font-heading font-extrabold text-sm text-sunrise-navy mb-1.5 leading-snug">
+              Entrada na Água
+            </h3>
+            <p class="text-xs text-sunrise-slate leading-relaxed">
+              Conduzimos o grupo até o ponto estratégico e calmo da enseada para assistir ao nascer do sol.
+            </p>
+          </div>
+        </div>
+
+        <!-- Passo 8 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between card-touch">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-sunrise-navy text-sunrise-yellow font-heading font-black text-sm flex items-center justify-center mb-3">
+              8
+            </div>
+            <h3 class="font-heading font-extrabold text-sm text-sunrise-navy mb-1.5 leading-snug">
+              Fotos Durante a Experiência
+            </h3>
+            <p class="text-xs text-sunrise-slate leading-relaxed">
+              Tiramos fotos espontâneas, fotos individuais no reflexo do sol e registros conjuntos do grupo.
+            </p>
+          </div>
+        </div>
+
+        <!-- Passo 9 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between card-touch">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-sunrise-navy text-sunrise-yellow font-heading font-black text-sm flex items-center justify-center mb-3">
+              9
+            </div>
+            <h3 class="font-heading font-extrabold text-sm text-sunrise-navy mb-1.5 leading-snug">
+              Retorno Seguro
+            </h3>
+            <p class="text-xs text-sunrise-slate leading-relaxed">
+              Organizamos todo o grupo para voltarmos juntos até a faixa de areia com acompanhamento próximo.
+            </p>
+          </div>
+        </div>
+
+        <!-- Passo 10 -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between card-touch">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-sunrise-navy text-sunrise-yellow font-heading font-black text-sm flex items-center justify-center mb-3">
+              10
+            </div>
+            <h3 class="font-heading font-extrabold text-sm text-sunrise-navy mb-1.5 leading-snug">
+              Finalização na Areia & Ducha
+            </h3>
+            <p class="text-xs text-sunrise-slate leading-relaxed">
+              Fotos finais, ducha de água doce e orientações detalhadas sobre o envio do link das fotos digitais.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Seção de Apoio: Informações Práticas -->
+      <div class="bg-sunrise-sand rounded-3xl p-8 border border-sunrise-foam/60">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <span class="text-xs font-heading font-bold text-sunrise-cerulean uppercase tracking-widest block mb-1">Guia do Remador</span>
+          <h2 class="font-heading font-black text-xl sm:text-2xl text-sunrise-navy">Informações Práticas</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+            <h3 class="font-heading font-bold text-sm text-sunrise-navy mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-sunrise-yellow"></span>
+              O Que Levar Para Sua Experiência
+            </h3>
+            <ul class="space-y-2 text-xs text-sunrise-slate leading-relaxed">
+              <li>&bull; Roupa de banho confortável (sunga, maiô, biquíni ou bermuda leve).</li>
+              <li>&bull; Protetor solar e toalha para a saída do mar.</li>
+              <li>&bull; Troca de roupa seca (temos vestiários completos na guarderia).</li>
+              <li>&bull; Garrafinha de água para hidratação após a remada.</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+            <h3 class="font-heading font-bold text-sm text-sunrise-navy mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-sunrise-yellow"></span>
+              Horários e Duração
+            </h3>
+            <p class="text-xs text-sunrise-slate leading-relaxed mb-3">
+              A remada tem duração média de <strong>1 hora e 30 minutos</strong> no mar, com instruções prévias na areia. O nível de esforço é leve a moderado em águas abrigadas.
+            </p>
+            <button onclick="showPage('reserva')" class="w-full btn-solar text-xs py-3">
+              Agendar Meu Passeio Agora &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =================================================================
+       PÁGINA 4: RESERVAS ONLINE (IMAGEM 4 WOOCOMMERCE BOOKINGS)
+       ================================================================= -->
+  <main id="view-reserva" class="page-view hidden">
+    
+    <section class="bg-sunrise-navy text-white pt-16 pb-20 px-5 text-center">
+      <div class="max-w-3xl mx-auto">
+        <span class="inline-block text-xs font-heading font-extrabold uppercase tracking-widest text-sunrise-yellow bg-white/10 px-4 py-1.5 rounded-full mb-3">
+          Agendamento Oficial WooCommerce
+        </span>
+        <h1 class="font-heading font-black text-3xl sm:text-5xl text-white mb-3">
+          Reserve sua Vaga no Amanhecer
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-200">
+          Selecione a data desejada para consultar a disponibilidade de pranchas e instrutores na Guarderia Surf Club.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-14 max-w-6xl mx-auto px-5 sm:px-6 -mt-8 relative z-20">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
+        
+        <!-- Coluna Esquerda: Formulário WooCommerce Bookings -->
+        <div class="lg:col-span-7 bg-white rounded-3xl p-7 sm:p-8 shadow-xl border border-slate-200">
+          <div class="border-b border-slate-100 pb-4 mb-6">
+            <span class="text-xs font-heading font-bold text-sunrise-cerulean uppercase tracking-wider block mb-1">WooCommerce Bookings</span>
+            <h2 class="font-heading font-black text-xl text-sunrise-navy">Calendário de Agendamento</h2>
+            <p class="text-xs text-sunrise-slate mt-1">Horário oficial da saída: 05:30 AM (America/Sao_Paulo)</p>
+          </div>
+
+          <!-- Seletor de Participantes -->
+          <div class="mb-5">
+            <label class="block text-xs font-heading font-bold text-sunrise-navy mb-1.5">Número de Pessoas:</label>
+            <div class="flex items-center gap-3">
+              <input type="number" id="wc-booking-persons" value="1" min="1" max="15" class="w-24 px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-bold text-sunrise-navy text-center focus:outline-none focus:border-sunrise-cerulean bg-slate-50">
+              <span class="text-xs text-slate-500">R$ 150,00 por participante (passeio avulso)</span>
+            </div>
+          </div>
+
+          <!-- Calendário Interativo Setembro 2026 -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-4 mb-5 shadow-sm">
+            <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-100">
+              <button type="button" class="text-xs font-bold text-sunrise-cerulean px-2 py-1 rounded hover:bg-slate-100">&larr; Anterior</button>
+              <strong class="text-xs font-heading font-extrabold uppercase text-sunrise-navy tracking-wider">SETEMBRO 2026</strong>
+              <button type="button" class="text-xs font-bold text-sunrise-cerulean px-2 py-1 rounded hover:bg-slate-100">Próximo &rarr;</button>
+            </div>
+
+            <table class="w-full wc-bookings-calendar-table table-fixed">
+              <thead>
+                <tr>
+                  <th>S</th><th>T</th><th>Q</th><th>Q</th><th>S</th><th>S</th><th>D</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="wc-day-btn disabled">31</span></td>
+                  <td><button type="button" class="wc-day-btn available" onclick="selectCalendarDay(this, 1)">1</button></td>
+                  <td><button type="button" class="wc-day-btn available" onclick="selectCalendarDay(this, 2)">2</button></td>
+                  <td><button type="button" class="wc-day-btn available" onclick="selectCalendarDay(this, 3)">3</button></td>
+                  <td><button type="button" class="wc-day-btn available selected" onclick="selectCalendarDay(this, 4)">4</button></td>
+                  <td><button type="button" class="wc-day-btn available" onclick="selectCalendarDay(this, 5)">5</button></td>
+                  <td><button type="button" class="wc-day-btn available" onclick="selectCalendarDay(this, 6)">6</button></td>
+                </tr>
+                <tr>
+                  <td><button type="button" class="wc-day-btn available" onclick="selectCalendarDay(this, 7)">7</button></td>
+                  <td><button type="button" class="wc-day-btn available" onclick="selectCalendarDay(this, 8)">8</button></td>
+                  <td><button type="button" class="wc-day-btn available" onclick="selectCalendarDay(this, 9)">9</button></td>
+                  <td><button type="button" class="wc-day-btn available" onclick="selectCalendarDay(this, 10)">10</button></td>
+                  <td><button type="button" class="wc-day-btn available" onclick="selectCalendarDay(this, 11)">11</button></td>
+                  <td><button type="button" class="wc-day-btn available" onclick="selectCalendarDay(this, 12)">12</button></td>
+                  <td><button type="button" class="wc-day-btn available" onclick="selectCalendarDay(this, 13)">13</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Horário Disponível -->
+          <div class="mb-5">
+            <label class="block text-xs font-heading font-bold text-sunrise-navy mb-1.5">Horário Confirmado:</label>
+            <div class="inline-flex items-center gap-2 bg-sunrise-sand border-2 border-sunrise-yellow px-4 py-2 rounded-xl text-xs font-heading font-extrabold text-sunrise-navy">
+              <span>05:30 AM (Nascer do Sol no Mar)</span>
+              <span class="text-emerald-600 font-bold">&bull; Vagas Abertas</span>
+            </div>
+          </div>
+
+          <!-- Campos de Contato -->
+          <div class="space-y-3.5 mb-6">
+            <div>
+              <label class="block text-xs font-heading font-bold text-sunrise-navy mb-1">Nome Completo</label>
+              <input type="text" placeholder="Seu nome" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:border-sunrise-cerulean focus:outline-none bg-slate-50">
+            </div>
+            <div>
+              <label class="block text-xs font-heading font-bold text-sunrise-navy mb-1">WhatsApp / Telefone com DDD</label>
+              <input type="tel" placeholder="(21) 99999-9999" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:border-sunrise-cerulean focus:outline-none bg-slate-50">
+            </div>
+          </div>
+
+          <!-- Preço e Botão Submit -->
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between mb-5">
+            <span class="text-xs font-semibold text-sunrise-slate">Total da Reserva:</span>
+            <span class="text-lg font-heading font-black text-sunrise-navy" id="wc-total-cost">R$ 150,00</span>
+          </div>
+
+          <button type="button" onclick="alert('Reserva simulada com sucesso! No WordPress, essa ação redireciona para o checkout seguro do WooCommerce.');" class="btn-solar w-full py-4 text-center">
+            Confirmar e Prosseguir para Pagamento &rarr;
+          </button>
+
+          <!-- Banner de Contingência de Vagas -->
+          <div class="mt-5">
+            <a href="https://sunrisesup.com.br/product/passeio-nascer-do-sol/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 bg-sunrise-navy-dark text-white rounded-2xl border border-sunrise-yellow/40 hover:border-sunrise-yellow transition shadow-lg group">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-sunrise-yellow flex-shrink-0">
+                  <svg class="w-4 h-4 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                </div>
+                <span class="text-xs sm:text-sm font-heading font-bold text-white">Ficou sem vaga para a data?</span>
+              </div>
+              <span class="bg-sunrise-yellow text-sunrise-navy text-[11px] font-heading font-extrabold uppercase px-3 py-1.5 rounded-full shadow transition transform group-hover:scale-105 whitespace-nowrap">
+                CLIQUE AQUI &rarr;
+              </span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Coluna Direita: Identidade Visual Guarderia Surf Club -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <div class="bg-gradient-to-br from-sunrise-navy to-sunrise-cerulean text-white rounded-3xl p-8 shadow-xl border border-white/20 text-center relative overflow-hidden">
+            <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-white p-2 shadow-lg border-2 border-sunrise-yellow flex items-center justify-center">
+              <img 
+                src="https://sunrisesup.com.br/wp-content/uploads/2026/08/sunrise-logo-192-x-192-px-1.png" 
+                alt="Logo Guarderia Surf Club" 
+                class="w-full h-full object-cover rounded-full"
+              />
+            </div>
+            <h3 class="font-heading font-black text-2xl text-white tracking-wide mb-1">GUARDERIA SUNRISE</h3>
+            <span class="text-xs uppercase font-extrabold tracking-widest text-sunrise-yellow block mb-4">Surf Club &bull; Copacabana</span>
+            
+            <p class="text-xs text-slate-200 leading-relaxed mb-6">
+              A experiência de remo mais tradicional e segura do mar do Rio de Janeiro. Pranchas novas, coletes certificados e fotos em alta resolução no mesmo dia.
+            </p>
+
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 text-left border border-white/15 text-xs space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="text-sunrise-yellow font-bold">&bull;</span> Ducha de água doce na volta do mar
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-sunrise-yellow font-bold">&bull;</span> Vestiários e guarda-volumes inclusos
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-sunrise-yellow font-bold">&bull;</span> Cancelamento grátis até 48h antes
+              </div>
+            </div>
+          </div>
+
+          <!-- Caixa Política de Cancelamento -->
+          <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm text-center">
+            <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-sunrise-cerulean mb-1">Política de Cancelamento</h4>
+            <p class="text-xs text-sunrise-slate font-medium">Cancelamento gratuito e reembolso integral até 48 horas antes da saída.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =================================================================
+       PÁGINA 5: CONTATO & LOCALIZAÇÃO
+       ================================================================= -->
+  <main id="view-contato" class="page-view hidden">
+    
+    <section class="bg-sunrise-navy text-white pt-16 pb-20 px-5 text-center">
+      <div class="max-w-3xl mx-auto">
+        <span class="inline-block text-xs font-heading font-extrabold uppercase tracking-widest text-sunrise-yellow bg-white/10 px-4 py-1.5 rounded-full mb-3">
+          Atendimento Oficial
+        </span>
+        <h1 class="font-heading font-black text-3xl sm:text-5xl text-white mb-3">
+          Fale com a <span class="text-sunrise-yellow">Sunrise SUP</span>
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-200">
+          Estamos a postos na base da Guarderia Surf Club para esclarecer qualquer dúvida sobre condições marítimas, agendamentos e estrutura.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-14 max-w-6xl mx-auto px-5 sm:px-6 -mt-8 relative z-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <div class="lg:col-span-5 space-y-4">
+          <div class="bg-white rounded-3xl p-6 shadow-xl border border-slate-100 card-touch">
+            <span class="text-[10px] font-heading font-black uppercase tracking-wider text-sunrise-cerulean block mb-1">Localização</span>
+            <h2 class="font-heading font-bold text-base text-sunrise-navy">Ponto de Encontro Oficial</h2>
+            <p class="text-xs sm:text-sm text-sunrise-slate mt-1 leading-relaxed">
+              <strong>Guarderia Surf Club</strong><br>
+              R. Francisco Otaviano, 42 - Copacabana<br>
+              Rio de Janeiro - RJ, CEP 22080-041
+            </p>
+            <span class="inline-block mt-2 text-[11px] font-bold text-sunrise-cerulean">Acesso fácil a pé, táxi ou aplicativo</span>
+          </div>
+
+          <div class="bg-white rounded-3xl p-6 shadow-xl border border-slate-100 card-touch">
+            <span class="text-[10px] font-heading font-black uppercase tracking-wider text-sunrise-cerulean block mb-1">WhatsApp</span>
+            <h2 class="font-heading font-bold text-base text-sunrise-navy">Atendimento e Reservas</h2>
+            <p class="text-xs sm:text-sm text-sunrise-slate mt-1">
+              Contato direto com a equipe para informações sobre o mar e vagas:
+            </p>
+            <a href="https://wa.me/5521998460818" target="_blank" class="inline-block mt-2 font-heading font-extrabold text-sm text-sunrise-cerulean hover:underline">
+              +55 21 99846-0818 &rarr;
+            </a>
+          </div>
+
+          <div class="bg-white rounded-3xl p-6 shadow-xl border border-slate-100 card-touch">
+            <span class="text-[10px] font-heading font-black uppercase tracking-wider text-sunrise-cerulean block mb-1">Funcionamento</span>
+            <h2 class="font-heading font-bold text-base text-sunrise-navy">Horários de Saída</h2>
+            <p class="text-xs sm:text-sm text-sunrise-slate mt-1 leading-relaxed">
+              <strong>Passeio Nascer do Sol:</strong> Diariamente às 05:30 AM.<br>
+              <strong>Atendimento Guarderia:</strong> 04:45 AM às 18:00 PM.
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="bg-white rounded-3xl p-7 sm:p-8 shadow-xl border border-slate-100">
+            <h2 class="font-heading font-extrabold text-xl text-sunrise-navy mb-2">Envie uma Mensagem</h2>
+            <p class="text-xs text-slate-500 mb-6">Dúvidas sobre reservas avulsas, amigos ou horários especiais? Escreva para nós:</p>
+            
+            <form onsubmit="event.preventDefault(); document.getElementById('form-feedback-msg').classList.remove('hidden');" class="space-y-4">
+              <div>
+                <label class="block text-xs font-heading font-bold text-sunrise-navy mb-1.5">Seu Nome Completo</label>
+                <input type="text" placeholder="Ex: Rodrigo Pereira" required class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm focus:border-sunrise-cerulean focus:outline-none bg-slate-50">
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-heading font-bold text-sunrise-navy mb-1.5">WhatsApp / Telefone</label>
+                  <input type="tel" placeholder="(21) 99846-0818" required class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm focus:border-sunrise-cerulean focus:outline-none bg-slate-50">
+                </div>
+                <div>
+                  <label class="block text-xs font-heading font-bold text-sunrise-navy mb-1.5">Assunto</label>
+                  <select class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm focus:border-sunrise-cerulean focus:outline-none bg-slate-50">
+                    <option>Passeio Nascer do Sol (R$ 150)</option>
+                    <option>Passeio com Amigos ou Família</option>
+                    <option>Dúvidas sobre Condições do Mar</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-heading font-bold text-sunrise-navy mb-1.5">Sua Dúvida ou Data Desejada</label>
+                <textarea rows="3" placeholder="Quantas pessoas e qual o dia pretendido..." class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm focus:border-sunrise-cerulean focus:outline-none bg-slate-50 resize-none"></textarea>
+              </div>
+
+              <div id="form-feedback-msg" class="hidden p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold text-center">
+                Mensagem enviada com sucesso. Nossa equipe entrará em contato via WhatsApp.
+              </div>
+
+              <button type="submit" class="btn-solar w-full">
+                Enviar Mensagem para a Equipe &rarr;
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================
+       RODAPÉ OFICIAL SUNRISE SUP (100% SEM EMOJIS)
+       =================================================== -->
+  <footer class="bg-sunrise-navy text-white pt-14 pb-10 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-10">
+        
+        <div class="md:col-span-5">
+          <div class="flex items-center gap-3 mb-3">
+            <img 
+              src="https://sunrisesup.com.br/wp-content/uploads/2026/08/sunrise-logo-192-x-192-px-1.png" 
+              alt="Logo Sunrise SUP" 
+              class="w-10 h-10 rounded-full bg-white p-0.5 border border-sunrise-yellow object-cover"
+            />
+            <span class="font-heading font-extrabold text-xl tracking-wider">SUNRISE SUP</span>
+          </div>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+            Escola e guarderia especializada em turismo esportivo e experiências de conexão ao ar livre na praia de Copacabana.
+          </p>
+          <div class="flex flex-wrap gap-2 text-[11px] text-sunrise-foam">
+            <span class="bg-white/10 px-3 py-1 rounded-md">Pagamento Seguro</span>
+            <span class="bg-white/10 px-3 py-1 rounded-md">Guarderia Surf Club</span>
+          </div>
+        </div>
+
+        <div class="md:col-span-3">
+          <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-sunrise-yellow mb-3">Navegação</h4>
+          <ul class="space-y-2 text-xs text-slate-300">
+            <li><button onclick="showPage('home')" class="hover:text-sunrise-yellow transition">Início</button></li>
+            <li><button onclick="showPage('sobre')" class="hover:text-sunrise-yellow transition">Sobre Nossa História</button></li>
+            <li><button onclick="showPage('comotrabalhamos')" class="hover:text-sunrise-yellow transition">Como Trabalhamos</button></li>
+            <li><button onclick="showPage('reserva')" class="hover:text-sunrise-yellow transition">Reservas Online</button></li>
+            <li><button onclick="showPage('contato')" class="hover:text-sunrise-yellow transition">Contato e Endereço</button></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4">
+          <h4 class="font-heading font-bold text-xs uppercase tracking-wider text-sunrise-yellow mb-3">Ponto de Encontro</h4>
+          <p class="text-xs text-slate-300 leading-relaxed mb-2">
+            <strong>Endereço:</strong> R. Francisco Otaviano, 42 - Copacabana, Rio de Janeiro - RJ, 22080-041 (Guarderia Surf Club)
+          </p>
+          <p class="text-xs text-slate-300 leading-relaxed mb-2">
+            <strong>WhatsApp:</strong> <a href="https://wa.me/5521998460818" target="_blank" class="text-white hover:text-sunrise-yellow underline">+55 21 99846-0818</a>
+          </p>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            <strong>E-mail:</strong> guarderiasurfclub26@gmail.com
+          </p>
+        </div>
+
+      </div>
+
+      <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-3">
+        <div>
+          &copy; 2026 Sunrise SUP &bull; Guarderia Surf Club. Todos os direitos reservados.
+        </div>
+        <div class="text-slate-400">
+          Copacabana, Rio de Janeiro
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- BOTAO FLUTUANTE DA ATENDENTE SUNNYS (SEM EMOJIS) -->
+  <a 
+    href="https://wa.me/5521998460818?text=Ola%20Sunnys!%20Gostaria%20de%20informacoes%20sobre%20as%20vagas%20de%20stand%20up%20paddle." 
+    target="_blank"
+    rel="noopener noreferrer"
+    class="fixed bottom-6 right-6 z-50 bg-sunrise-yellow hover:bg-sunrise-yellow-hover text-sunrise-navy font-heading font-extrabold text-xs uppercase px-4 py-2.5 rounded-full shadow-2xl flex items-center gap-2.5 border-2 border-white transition-all transform hover:scale-105"
+    aria-label="Falar com a atendente virtual Sunnys"
+  >
+    <div class="w-6 h-6 rounded-full overflow-hidden bg-white flex items-center justify-center border border-sunrise-navy/20">
+      <img src="https://sunrisesup.com.br/wp-content/uploads/2026/08/sunrise-logo-192-x-192-px-1.png" alt="Sunnys Logo" class="w-full h-full object-cover">
+    </div>
+    <span>Sunnys &bull; Guia Virtual</span>
+  </a>
+
+  <!-- SCRIPT DE NAVEGAÇÃO ENTRE TODAS AS TELAS -->
+  <script>
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+      const toggleBtn = document.getElementById('mobile-menu-toggle');
+      
+      const isHidden = drawer.classList.contains('hidden');
+      if (isHidden) {
+        drawer.classList.remove('hidden');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+      } else {
+        closeMobileMenu();
+      }
+    }
+
+    function closeMobileMenu() {
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+      const toggleBtn = document.getElementById('mobile-menu-toggle');
+      
+      if (drawer) drawer.classList.add('hidden');
+      if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
+      if (closeIcon) closeIcon.classList.add('hidden');
+      if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    function showPage(pageId) {
+      const views = document.querySelectorAll('.page-view');
+      views.forEach(view => {
+        view.classList.add('hidden');
+        view.classList.remove('block');
+      });
+
+      const tabs = document.querySelectorAll('.page-tab-btn');
+      tabs.forEach(tab => {
+        tab.classList.remove('active', 'bg-sunrise-yellow', 'text-sunrise-navy');
+        tab.classList.add('bg-white/10', 'text-white');
+      });
+
+      const mobileTabs = document.querySelectorAll('.mobile-tab-btn');
+      mobileTabs.forEach(tab => {
+        tab.classList.remove('active');
+      });
+
+      const activeView = document.getElementById('view-' + pageId);
+      if (activeView) {
+        activeView.classList.remove('hidden');
+        activeView.classList.add('block');
+      }
+
+      const activeTab = document.getElementById('tab-' + pageId);
+      if (activeTab) {
+        activeTab.classList.add('active');
+      }
+
+      const activeMobileTab = document.getElementById('tab-mobile-' + pageId);
+      if (activeMobileTab) {
+        activeMobileTab.classList.add('active');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function selectCalendarDay(btn, day) {
+      document.querySelectorAll('.wc-day-btn.available').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    }
+
+    // Gerenciador do input de pessoas no checkout
+    const personsInput = document.getElementById('wc-booking-persons');
+    const totalCostEl = document.getElementById('wc-total-cost');
+    if (personsInput && totalCostEl) {
+      personsInput.addEventListener('input', function() {
+        const qty = Math.max(1, parseInt(this.value, 10) || 1);
+        const total = qty * 150;
+        totalCostEl.textContent = 'R$ ' + total.toLocaleString('pt-BR') + ',00';
+      });
+    }
+  </script>
+
+</body>
+</html>
