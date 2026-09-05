@@ -1,0 +1,19 @@
+[contexto]
+idioma = "pt-BR"
+comunicacao = "estritamente_em_portugues"
+estilo_docs = "sem_emojis,badges_permitidas,markdown_limpo"
+
+[stack]
+core = ["react", "typescript", "tailwind_css", "html5"]
+testes_unitarios = "vitest"
+testes_e2e = "cypress"
+
+[politicas_git]
+autonomia = "sob_aprovacao"
+padrao_branches = "portugues (funcionalidade/*, correcao/*, refatoracao/*, teste/*, documentacao/*)"
+padrao_commits = "conventional_commits_em_portugues"
+pre_commit_gate = ["npm run lint", "npx tsc --noEmit", "npm test"]
+
+[protocolo_documentacao]
+obrigatorio_antes_de_codar = ["docs/requisitos.md", "docs/design-system.md", "README.md"]
+sincronizacao_continua = true
