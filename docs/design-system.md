@@ -1,64 +1,50 @@
-# Design System - Sunrise SUP
+# Design System - Sunrise SUP (Guarderia Surf Club)
 
 ![Status](https://img.shields.io/badge/Status-Ativo-success)
-![Tema](https://img.shields.io/badge/Tema-Ocean_Sunrise-cyan)
+![Tema](https://img.shields.io/badge/Tema-Sunrise_Navy_Yellow-yellow)
 
-Especificação dos tokens de design, paleta de cores, tipografia e diretrizes de componentes da interface do Sunrise SUP.
+Ficha técnica de tokens de cor, tipografia e diretrizes de layout fiéis ao protótipo da Guarderia Surf Club em Copacabana.
 
-## 1. Paleta de Cores (Ocean Sunrise)
+## 1. Paleta de Cores Oficial
 
-### Cores Primárias e Secundárias
-
-| Token | Variável HSL / Hex | Aplicação |
+| Token | Hex / HSL | Descrição |
 | :--- | :--- | :--- |
-| `primary-500` | `hsl(199, 89%, 48%)` / `#0ea5e9` | Cor principal de marca (Ocean Cyan) |
-| `primary-600` | `hsl(201, 96%, 32%)` / `#0284c7` | Estados de hover e botões principais |
-| `secondary-500` | `hsl(24, 95%, 53%)` / `#f97316` | Acentos e destaque (Sunrise Orange) |
-| `secondary-600` | `hsl(21, 90%, 48%)` / `#ea580c` | Hover de botões de destaque/CTA |
-| `accent-gold` | `hsl(45, 93%, 47%)` / `#eab308` | Avaliações, estrelas e destaques |
-
-### Neutros e Superfícies (Dark / Light Mode)
-
-| Token | Hex | Aplicação |
-| :--- | :--- | :--- |
-| `bg-primary` | `#0f172a` (Dark) / `#f8fafc` (Light) | Fundo principal da aplicação |
-| `bg-card` | `#1e293b` (Dark) / `#ffffff` (Light) | Superfícies de cards e modais |
-| `text-main` | `#f8fafc` (Dark) / `#0f172a` (Light) | Texto principal de leitura |
-| `text-muted` | `#94a3b8` (Dark) / `#64748b` (Light) | Textos secundários e descrições |
-| `border-subtle`| `#334155` (Dark) / `#e2e8f0` (Light) | Bordas e divisores de elementos |
+| `sunrise-yellow` | `#FCD04B` | Amarelo Solar principal dos botões CTA e destaques |
+| `sunrise-yellow-hover` | `#F3C432` | Estado de hover dos botões primários |
+| `sunrise-navy` | `#112D4E` | Azul Marinho das seções principais e cabeçalho |
+| `sunrise-navy-dark` | `#0B1D33` | Azul Noturno do header fixo e detalhes |
+| `sunrise-cerulean` | `#2B7EA1` | Azul Cerúleo para badges e cartões de apoio |
+| `sunrise-foam` | `#95C3D7` | Azul Espuma para textos secundários |
+| `sunrise-sand` | `#EBF6FA` | Fundo suave de cards editoriais |
+| `sunrise-slate` | `#475569` | Cor de texto para descrições de leitura |
 
 ## 2. Tipografia
 
-- Font-Family Principal: `Inter`, `sans-serif`
-- Font-Family Destaques/Títulos: `Outfit`, `sans-serif`
+- **Títulos e Headings**: `Outfit`, `sans-serif` (pesos 600, 700, 800, 900)
+- **Corpo de Texto**: `Inter`, `sans-serif` (pesos 300, 400, 500, 600)
 
-| Escala | Tamanho | Peso | Line Height |
-| :--- | :--- | :--- | :--- |
-| Heading 1 | 2.5rem (40px) | Bold (700) | 1.2 |
-| Heading 2 | 2.0rem (32px) | Bold (700) | 1.25 |
-| Heading 3 | 1.5rem (24px) | SemiBold (600) | 1.3 |
-| Body Normal | 1.0rem (16px) | Regular (400) | 1.5 |
-| Body Small | 0.875rem (14px)| Medium (500) | 1.4 |
+| Elemento | Fonte | Tamanho / Estilo |
+| :--- | :--- | :--- |
+| H1 Hero | Outfit | 3.5rem (56px) Bold / Black |
+| H2 Seções | Outfit | 2.25rem (36px) Black |
+| H3 Subseções | Outfit | 1.5rem (24px) Bold |
+| Botões Solar | Outfit | 0.875rem (14px) 800 Uppercase |
+| Corpo de Texto | Inter | 0.875rem - 1.0rem (14-16px) Regular |
 
-## 3. Sombras e Efeitos Visuais
+## 3. Componentes do Design
 
-- Glassmorphism Card: `backdrop-filter: blur(12px); background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1);`
-- Card Glow: `box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.25);`
-- Drop Shadow Buttons: `0 4px 14px 0 rgba(249, 115, 22, 0.39);`
+### Botão Solar (`.btn-solar`)
+- Background: `#FCD04B`
+- Cor do Texto: `#112D4E`
+- Font: `Outfit` 800 Uppercase
+- Radius: `50px`
+- Sombra: `0 8px 22px rgba(252, 208, 75, 0.45)`
 
-## 4. Componentes Base
+### Cápsula Flutuante de Redes Sociais (`.sunrise-floating-glass-dock`)
+- Posição: `fixed`, `right: 14px`, `top: 50%`
+- Fundo: Glassmorphism `rgba(17, 45, 78, 0.55)` com `backdrop-filter: blur(16px)`
+- Ícones: WhatsApp, Instagram, TikTok
 
-### Botões (`Button`)
-- Variantes: `primary` (Ocean Cyan), `secondary` (Sunrise Orange), `outline`, `ghost`.
-- Tamanhos: `sm` (height: 36px), `md` (height: 44px), `lg` (height: 52px).
-- Estados: Normal, Hover, Active, Disabled, Loading (Spinner).
-
-### Cards de Produto / Agendamento (`EquipmentCard`)
-- Imagem de capa com efeito zoom no hover.
-- Badges de categoria (Aluguel, Aula, Produto).
-- Indicador de disponibilidade em tempo real.
-- Preço por hora ou valor de compra.
-
-### Modais e Drawers (`Modal`, `CartDrawer`)
-- Transição de entrada suave (fade-in + scale).
-- Fechamento via tecla ESC e clique fora no backdrop.
+### Botão Flutuante Atendente Virtual ("Sunnys • Guia Virtual")
+- Posição: `fixed`, `bottom: 24px`, `right: 24px`
+- Ícone circular com a marca Sunrise SUP + texto em amarelo solar.

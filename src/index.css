@@ -1,117 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    --sunrise-yellow: #FCD04B;
+    --sunrise-yellow-hover: #F3C432;
+    --sunrise-navy: #112D4E;
+    --sunrise-navy-dark: #0B1D33;
+    --sunrise-cerulean: #2B7EA1;
+    --sunrise-foam: #95C3D7;
+    --sunrise-sand: #EBF6FA;
+    --sunrise-slate: #475569;
+
+    font-family: 'Inter', sans-serif;
+    color: var(--sunrise-navy);
+    background-color: #F8FAFC;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.02em;
   }
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+/* Botão Primário Solar */
+.btn-solar {
+  background: var(--sunrise-yellow);
+  color: var(--sunrise-navy);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(252, 208, 75, 0.45);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-solar:hover {
+  background: var(--sunrise-yellow-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(252, 208, 75, 0.6);
+  color: var(--sunrise-navy);
+}
+
+/* Cápsula Flutuante Fixa de Redes Sociais */
+.sunrise-floating-glass-dock {
+  position: fixed;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  align-items: center;
+  gap: 10px;
+  z-index: 70;
+  padding: 10px 8px;
+  background: rgba(17, 45, 78, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 40px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
 }
 
-body {
-  margin: 0;
+.sunrise-floating-glass-dock a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.25s ease;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+.sunrise-floating-glass-dock a:hover {
+  background: var(--sunrise-yellow);
+  color: var(--sunrise-navy);
+  transform: scale(1.1);
+  border-color: var(--sunrise-yellow);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
+.card-touch {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card-touch:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(17, 45, 78, 0.08);
+  border-color: var(--sunrise-cerulean);
+}
 
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+.page-tab-btn.active {
+  background: var(--sunrise-yellow) !important;
+  color: var(--sunrise-navy) !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 14px rgba(252, 208, 75, 0.45);
+}
+
+.steps-process-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+@media (max-width: 1360px) {
+  .steps-process-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 16px !important;
   }
 }
 
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-
-  @media (max-width: 1024px) {
-    font-size: 20px;
+@media (max-width: 768px) {
+  .steps-process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
 
-p {
-  margin: 0;
+@media (max-width: 480px) {
+  .steps-process-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
-code,
-.counter {
-  font-family: var(--mono);
+.wc-bookings-calendar-table th {
+  padding: 8px 4px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--sunrise-cerulean);
+  text-transform: uppercase;
+  text-align: center;
+}
+.wc-bookings-calendar-table td {
+  padding: 3px;
+  text-align: center;
+}
+.wc-day-btn {
+  width: 100%;
+  height: 38px;
   display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 1px solid transparent;
 }
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.wc-day-btn.available {
+  background-color: var(--sunrise-sand);
+  color: var(--sunrise-navy);
+  border-color: rgba(149, 195, 215, 0.4);
+}
+.wc-day-btn.available:hover {
+  background-color: var(--sunrise-yellow);
+  color: var(--sunrise-navy);
+  transform: scale(1.05);
+}
+.wc-day-btn.selected {
+  background-color: var(--sunrise-yellow) !important;
+  color: var(--sunrise-navy) !important;
+  font-weight: 900 !important;
+  border-color: var(--sunrise-yellow-hover) !important;
+  box-shadow: 0 4px 10px rgba(252, 208, 75, 0.5);
+}
+.wc-day-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  color: #94a3b8;
 }
