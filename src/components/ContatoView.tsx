@@ -81,12 +81,13 @@ export const ContatoView: React.FC = () => {
                 Dúvidas sobre reservas avulsas, amigos ou horários especiais? Escreva para nós:
               </p>
               
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form id="contact-form" onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-heading font-bold text-[#112D4E] mb-1.5">
+                  <label htmlFor="contact-name" className="block text-xs font-heading font-bold text-[#112D4E] mb-1.5">
                     Seu Nome Completo
                   </label>
                   <input
+                    id="contact-name"
                     type="text"
                     placeholder="Ex: Rodrigo Pereira"
                     required
@@ -96,10 +97,11 @@ export const ContatoView: React.FC = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-heading font-bold text-[#112D4E] mb-1.5">
+                    <label htmlFor="contact-phone" className="block text-xs font-heading font-bold text-[#112D4E] mb-1.5">
                       WhatsApp / Telefone
                     </label>
                     <input
+                      id="contact-phone"
                       type="tel"
                       placeholder="(21) 99846-0818"
                       required
@@ -107,10 +109,10 @@ export const ContatoView: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-heading font-bold text-[#112D4E] mb-1.5">
+                    <label htmlFor="contact-subject" className="block text-xs font-heading font-bold text-[#112D4E] mb-1.5">
                       Assunto
                     </label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm focus:border-[#2B7EA1] focus:outline-none bg-slate-50">
+                    <select id="contact-subject" className="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm focus:border-[#2B7EA1] focus:outline-none bg-slate-50">
                       <option>Passeio Nascer do Sol (R$ 150)</option>
                       <option>Passeio com Amigos ou Família</option>
                       <option>Dúvidas sobre Condições do Mar</option>
@@ -119,10 +121,11 @@ export const ContatoView: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-heading font-bold text-[#112D4E] mb-1.5">
+                  <label htmlFor="contact-message" className="block text-xs font-heading font-bold text-[#112D4E] mb-1.5">
                     Sua Dúvida ou Data Desejada
                   </label>
                   <textarea
+                    id="contact-message"
                     rows={3}
                     placeholder="Quantas pessoas e qual o dia pretendido..."
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm focus:border-[#2B7EA1] focus:outline-none bg-slate-50 resize-none"
@@ -135,7 +138,7 @@ export const ContatoView: React.FC = () => {
                   </div>
                 )}
 
-                <button type="submit" className="btn-solar w-full">
+                <button id="btn-submit-contact" type="submit" className="btn-solar w-full">
                   Enviar Mensagem para a Equipe &rarr;
                 </button>
               </form>

@@ -48,3 +48,19 @@ Ficha técnica de tokens de cor, tipografia e diretrizes de layout fiéis ao pro
 ### Botão Flutuante Atendente Virtual ("Sunnys • Guia Virtual")
 - Posição: `fixed`, `bottom: 24px`, `right: 24px`
 - Ícone circular com a marca Sunrise SUP + texto em amarelo solar.
+
+## 4. Identificadores para Automação e Testes (IDs)
+
+| Elemento | ID | Descrição |
+| :--- | :--- | :--- |
+| Botão Navegação Início | `nav-home` | Botão no menu desktop para aba Início |
+| Botão Navegação Sobre | `nav-sobre` | Botão no menu desktop para aba Sobre Nós |
+| Botão Navegação Como Trabalhamos | `nav-comotrabalhamos` | Botão no menu desktop para aba Como Trabalhamos |
+| Botão Navegação Reservas | `nav-reserva` | Botão no menu desktop para aba Reservas Online |
+| Botão Navegação Contato | `nav-contato` | Botão no menu desktop para aba Contato |
+| Menu Mobile Toggle | `mobile-menu-toggle` | Botão para alternar visibilidade do menu mobile |
+| Input Pessoas Reserva | `wc-booking-persons` | Campo numérico de quantidade de participantes |
+| Form Reserva | `booking-form` | Formulário do calendário de agendamentos |
+| Botão Submit Reserva | `btn-submit-booking` | Botão de confirmação de agendamento |
+| Form Contato | `contact-form` | Formulário de envio de mensagens |
+

@@ -46,14 +46,15 @@ export const ReservaView: React.FC = () => {
               <p className="text-xs text-[#475569] mt-1">Horário oficial da saída: 05:30 AM (America/Sao_Paulo)</p>
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form id="booking-form" onSubmit={handleSubmit}>
               {/* Seletor de Participantes */}
               <div className="mb-5">
-                <label className="block text-xs font-heading font-bold text-[#112D4E] mb-1.5">
+                <label htmlFor="wc-booking-persons" className="block text-xs font-heading font-bold text-[#112D4E] mb-1.5">
                   Número de Pessoas:
                 </label>
                 <div className="flex items-center gap-3">
                   <input
+                    id="wc-booking-persons"
                     type="number"
                     value={personsCount}
                     onChange={(e) => setPersonsCount(Math.max(1, parseInt(e.target.value, 10) || 1))}
@@ -91,6 +92,7 @@ export const ReservaView: React.FC = () => {
                       {[1, 2, 3, 4, 5, 6].map((day) => (
                         <td key={day}>
                           <button
+                            id={`wc-day-${day}`}
                             type="button"
                             onClick={() => setSelectedDay(day)}
                             className={`wc-day-btn available ${selectedDay === day ? 'selected' : ''}`}
@@ -104,6 +106,7 @@ export const ReservaView: React.FC = () => {
                       {[7, 8, 9, 10, 11, 12, 13].map((day) => (
                         <td key={day}>
                           <button
+                            id={`wc-day-${day}`}
                             type="button"
                             onClick={() => setSelectedDay(day)}
                             className={`wc-day-btn available ${selectedDay === day ? 'selected' : ''}`}
@@ -131,10 +134,11 @@ export const ReservaView: React.FC = () => {
               {/* Campos de Contato */}
               <div className="space-y-3.5 mb-6">
                 <div>
-                  <label className="block text-xs font-heading font-bold text-[#112D4E] mb-1">
+                  <label htmlFor="customer-name" className="block text-xs font-heading font-bold text-[#112D4E] mb-1">
                     Nome Completo
                   </label>
                   <input
+                    id="customer-name"
                     type="text"
                     required
                     placeholder="Seu nome"
@@ -144,10 +148,11 @@ export const ReservaView: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-heading font-bold text-[#112D4E] mb-1">
+                  <label htmlFor="customer-phone" className="block text-xs font-heading font-bold text-[#112D4E] mb-1">
                     WhatsApp / Telefone com DDD
                   </label>
                   <input
+                    id="customer-phone"
                     type="tel"
                     required
                     placeholder="(21) 99999-9999"
@@ -173,6 +178,7 @@ export const ReservaView: React.FC = () => {
               ) : null}
 
               <button
+                id="btn-submit-booking"
                 type="submit"
                 className="btn-solar w-full py-4 text-center"
               >

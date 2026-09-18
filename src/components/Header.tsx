@@ -51,6 +51,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onSelectTab }) => {
         {/* Mobile quick reserve button & hamburger */}
         <div className="flex items-center gap-2 md:hidden">
           <button
+            id="mobile-btn-reserve"
             type="button"
             onClick={() => handleTabClick('reserva')}
             className="bg-[#FCD04B] text-[#112D4E] font-heading font-extrabold text-[11px] uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-sm"
@@ -59,18 +60,19 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onSelectTab }) => {
           </button>
 
           <button
+            id="mobile-menu-toggle"
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
             className="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 active:scale-95 flex items-center justify-center transition border border-white/20"
             aria-label="Abrir Menu de Navegação"
           >
             {mobileOpen ? (
-              <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2.2" strokeLinecap="round">
+              <svg className="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2.2" strokeLinecap="round">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             ) : (
-              <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2.2" strokeLinecap="round">
+              <svg className="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2.2" strokeLinecap="round">
                 <line x1="3" y1="6" x2="21" y2="6" />
                 <line x1="3" y1="12" x2="21" y2="12" />
                 <line x1="3" y1="18" x2="21" y2="18" />
@@ -84,6 +86,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onSelectTab }) => {
           {navItems.map((item) => (
             <button
               key={item.id}
+              id={`nav-${item.id}`}
               type="button"
               onClick={() => handleTabClick(item.id)}
               className={`page-tab-btn px-3.5 py-2 rounded-full transition whitespace-nowrap ${
@@ -106,6 +109,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onSelectTab }) => {
             {navItems.map((item) => (
               <button
                 key={item.id}
+                id={`mobile-nav-${item.id}`}
                 type="button"
                 onClick={() => handleTabClick(item.id)}
                 className={`w-full text-left px-4 py-3 rounded-xl transition flex items-center justify-between ${
